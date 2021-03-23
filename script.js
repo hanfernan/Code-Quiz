@@ -10,7 +10,7 @@ var questionBank = [
   {
     question: "Commonly used data types do not include:",
     answers: ["1. strings", "2. booleans", "3. alerts", "4. objects"],
-    correctAnswer: "alerts",
+    correctAnswer: "3. alerts",
   },
   {
     question:
@@ -21,7 +21,7 @@ var questionBank = [
       "3. Parentheses",
       "4. Square Brackets",
     ],
-    correctAnswer: "Parentheses",
+    correctAnswer: "3. Parentheses",
   },
   {
     question: "Arrays in JavaScript can be used to store ___.",
@@ -31,13 +31,13 @@ var questionBank = [
       "3. booleans",
       "4. all of the above",
     ],
-    correctAnswer: "",
+    correctAnswer: "4. all of the above",
   },
   {
     question:
       "4. String values must be enclosed within ___ when being assigned to variables.",
     answers: ["	1. commas", "2. curly brackets", "3. quotes", "4. parentheses"],
-    correctAnswer: "",
+    correctAnswer: "4. parentheses",
   },
   {
     question:
@@ -48,7 +48,7 @@ var questionBank = [
       "3. for loops",
       "4. console log",
     ],
-    correctAnswer: "",
+    correctAnswer: "4. console log",
   },
 ];
 
@@ -76,16 +76,23 @@ function startGame() {
     answer.appendChild(answerOption);
   }
   answers.appendChild(answer);
+
+  setInterval(function () {
+    timer--;
+    timerEl.innerHTML = timer;
+  }, 1000);
 }
 
 function check(event) {
-  console.log(event.target.textContent);
   //show next question
   //check if answer is right or wrong
-  if (
-    (questionBank[currentIndex].answers[i] =
-      questionBank[currentIndex].correctAnswer)
-  ) {
+  if (event.target.textContent === questionBank[0].correctAnswer) {
+    alert("correct");
+    currentIndex++;
+    //WHY ISN'T THIS WORKING!!!!!
+  } else {
+    alert("incorrect");
+    timer = timer - 10;
   }
   // if {
   //   //tell computer when to stop
