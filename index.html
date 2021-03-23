@@ -8,14 +8,8 @@
     <link rel="stylesheet" type="text/css" href="./assets/CSS/style.css" />
   </head>
   <body>
-    <!-- <header>
-      <div>
-        <h2>View Highscores</h2>
-        <h2>Time</h2>
-      </div>
-    </header> -->
-    <div id="container">
-      <section id="start">
+    <section class="container">
+      <section class="start">
         <h1>Coding Quiz Challenge</h1>
         <p>
           Try to answer the following code-related questions within the time
@@ -24,15 +18,32 @@
         </p>
         <button>Start Quiz</button>
       </section>
-      <section class="quiz">
-        <div id="question"></div>
-        <div id="choices">
-          <div class ="choice" id="A" onclick="checkAnswer('A')"></div>
-          <div class ="choice" id="B" onclick="checkAnswer('B')"></div>
-          <div class ="choice" id="C" onclick="checkAnswer('C')"></div>
-        </div>
+  
+      <!-- putting in a dummy question to practice formatting on. I will add the final real questions later.  -->
+      <section id="question-one" class="question" data-state="hidden">
+        <h2>
+          Question 1. What is the correct answer to this question?
+        </h2>
+        <ol>
+          <li data-answer = "false">Answer 1</li>
+          <li data-answer = "false">Answer 2</li>
+          <li data-answer = "false">Answer 3</li>
+          <li class="true" data-answer = "true" >Answer 4</li>
+        </ol>
       </section>
-    </div>
+      <section id="question-two" class="question" data-state="hidden"> 
+        <h2>
+          Question 2. What is the correct answer to this second question?
+        </h2>
+        <ol>
+          <li class="true"data-answer = "true">Answer 1</li>
+          <li data-answer = "false">Answer 2</li>
+          <li data-answer = "false">Answer 3</li>
+          <li data-answer = "false">Answer 4</li>
+        </ol>
+      </section>
+      <section>
+    </section>
     
     <!-- <section>
       <h2>All done!</h2>

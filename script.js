@@ -1,74 +1,47 @@
 //define global variables
+var start = document.querySelector(".start");
+var firstQuest = document.querySelector(".first-question");
+var secondQuest = document.querySelector(".second-question");
+// var startButton = something;
+var trueAnswer = document.querySelector(".true");
+var container = document.querySelector(".container");
 
+//note to Hannah of tomorrow: you have been trying to make one section show up at a time using data attributes and event bubbling. Keep going! YOU GOT THIS!
+//this section is pulling from 04 Web APIs activity 20 on Data Attributes. I need to finish making it work for my purposes
+container.addEventListener("click", function(event) {
+    var element = event.target;
+    
+    if(element.matches(".question")) {
+        var state = element.getAttribute("data-state");
+        console.log(element.dataset)
 
-//store questions in an array
-var questions = [
-    {
-        question: "What is the answer to this question?",
-        choiceA : "answer 1",
-        choiceB : "answer 2",
-        choiceC : "answer 3",
-        choiceD : "answer 4",
-        correct : "B"
-    },{
-        question: "What is the answer to this other question?",
-        choiceA : "answer 1",
-        choiceB : "answer 2",
-        choiceC : "answer 3",
-        choiceD : "answer 4",
-        correct : "B"
+        if (state === "hidden") {
+            element.textContent = element.dataset.number;
+            element.dataset.state = "visible";
+        } else {
+            element.textContent= "";
+            element.setAttribute("data-state", "hidden")
+        }
+
     }
-];
-
+});
 
 //functions
+//I will uses event bubbling to move through the questions
+function goToOne(event) {
+    event.stopPropagation();
+    event.currentTarget
 
- //write function to show question one at a time
-function showQuestion(){
+}
+
+function goToTwo(event) {
+    event.stopPropagation();
 
 }
 //event listeners
-//write event listener that will 
 
-
-//when the user clicks on 
-
-
+startButton.addEventListener("click", goToOne);
+trueAnswer.addEventListener("click", goToTwo);
 
 
 
-
-//these are some notes for my thought process
-//use .getElementById();
-// I will need to append a <
-//activity 5
-//.querySelectorAll to select all of a certain element 
-// or could use getElementById as well
-//use .setAttribute to change items. takes two arguments. first is the name of the attribute you want to modify and second is what you want to change.
-//activity 6
-//set styling for multiple elements w/ for loop.
-// for(var i = 0; i < varElementId.length; i++)) {
-//     varElementId.setAttribute(
-//         "style",
-//         "color: blue; font-size: 30px; font-weight: bold"
-//     );
-// }
-
-//activity 7
-//.createElement
-//remember the 3 step process!
-
-//for buttons, use data attributes for right or wrong and event listeners for the click
-//event bubbling to move through array for hiding questions. assign all questions to an array
-//event.stopPropagation();
-// use innerHTML to clear out an existing section 
-
-//high scores stored in local storage
-//event listeners when you click start 
-//store an array of objects that include 3 pieces of data: store question as a string, store choices as an array of strings, and store the correct answer
-//storing correct answer: add data attributes to each of the buttons. if false, stay. if true, move on
-//innerHTML will allow you to wipe out the HTML content in between answers
-//three step process to dynamically generate content
-//score is equal to time left
-//high score is an array of objects- initial and score
-//data attribute is given to lis in HTML and .setAttribute is used in 
