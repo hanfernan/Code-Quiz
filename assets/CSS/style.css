@@ -5,3 +5,7 @@
 .question {
   align-content: center;
 }
+
+.hidden {
+  display: none;
+}
