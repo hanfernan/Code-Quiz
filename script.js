@@ -44,13 +44,13 @@ var questionBank = [
 
 //This function creates the countdown timer
 function countDownTimer() {
-    var timerInterval = setInterval(function () {
+    timerInterval = setInterval(function () {
         secondsLeft--;
         timerEl.textContent = secondsLeft;
 
         if (secondsLeft === 0) {
             clearInterval(timerInterval);
-            endQuiz();//game over function
+            endQuiz();
         }
     }, 1000);
 }
@@ -85,12 +85,11 @@ function displayQuestion() {
 
 //this function opens the end screen 
 function endQuiz() {
-    //stop timer
-    clearInterval(timerInterval);
-    //show end screen 
+    //show end screen and remove question and answers
     endScreen.classList.remove("hidden-end");
     questionContainer.classList.add("hidden");
     answers.classList.add("hidden");
+    //store secondsLeft in score
 }
 
 //this function checks the user's answer
@@ -105,10 +104,10 @@ function check(event) {
         currentIndex++;
     }
 
-
     //indicate when to stop
-    if (secondsLeft === 0 || currentIndex === questionBank.length) {
+    if (currentIndex === questionBank.length) {
         endQuiz();
+        clearInterval(timerInterval)
     } else {
         displayQuestion();
     }
@@ -120,3 +119,4 @@ startButton.addEventListener("click", startGame)
 //Remaining
 //create stop screen
 //add local storage for scores
+//style
