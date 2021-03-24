@@ -6,7 +6,7 @@ var questionContainer = document.querySelector("#question");
 var answers = document.querySelector(".answer");
 var timerEl = document.querySelector(".timer");
 var endScreen = document.querySelector(".end-screen");
-var finalScore = document.querySelector(".score");
+var scoreContainer = document.querySelector(".score");
 var timerInterval
 
 //javascript variables
@@ -55,8 +55,8 @@ function countDownTimer() {
     }, 1000);
 }
 
-//This function starts the game when clicking the start button. This prompts the first question and starts the timer. 
-function startGame() {
+//This function starts the quiz when clicking the start button. This prompts the first question and starts the timer. 
+function startQuiz() {
     start.classList.add("hidden");
     countDownTimer();
     displayQuestion();
@@ -83,6 +83,9 @@ function displayQuestion() {
 
 }
 
+// var endScreen = document.querySelector(".end-screen");
+// var scoreContainer = document.querySelector(".score");
+
 //this function opens the end screen 
 function endQuiz() {
     //show end screen and remove question and answers
@@ -90,6 +93,13 @@ function endQuiz() {
     questionContainer.classList.add("hidden");
     answers.classList.add("hidden");
     //store secondsLeft in score
+    //create element
+    scoreContainer.innerHTML = "";
+    var finalScore = document.createElement("span");
+    finalScore.textContent = secondsLeft;
+    scoreContainer.appendChild(finalScore);
+    //add content to the element
+    //append element
 }
 
 //this function checks the user's answer
@@ -104,7 +114,7 @@ function check(event) {
         currentIndex++;
     }
 
-    //indicate when to stop
+    //indicate when to stop quiz and timer
     if (currentIndex === questionBank.length) {
         endQuiz();
         clearInterval(timerInterval)
@@ -114,7 +124,7 @@ function check(event) {
 }
 
 //event listeners
-startButton.addEventListener("click", startGame)
+startButton.addEventListener("click", startQuiz)
 
 //Remaining
 //create stop screen
