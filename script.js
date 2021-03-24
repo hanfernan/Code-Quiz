@@ -5,15 +5,12 @@ var container = document.querySelector(".container");
 var questionContainer = document.querySelector("#question");
 var answers = document.querySelector(".answer");
 var timerEl = document.querySelector(".timer");
+var endScreen = document.querySelector(".end-screen");
+var finalScore = document.querySelector(".score");
 
 //javascript variables
 var secondsLeft = 75;
 var currentIndex = 0;
-
-//functions
-//function calls
-//event listeners
-
 var questionBank = [
     {
         question: "Commonly used data types do not include:",
@@ -42,7 +39,8 @@ var questionBank = [
     },
 ];
 
-//functions
+//Functions
+//This function creates the countdown timer
 function countDownTimer() {
     var timerInterval = setInterval(function () {
         secondsLeft--;
@@ -50,22 +48,27 @@ function countDownTimer() {
 
         if (secondsLeft === 0) {
             clearInterval(timerInterval);
-            //game over function
+            endQuiz();//game over function
         }
     }, 1000);
 }
+
+//This function starts the game when clicking the start button. This prompts the first question and starts the timer. 
 function startGame() {
     start.classList.add("hidden");
     countDownTimer();
     displayQuestion();
 }
 
+//This function is designed to iterate through the various question components stored in the questionContainer array. 
 function displayQuestion() {
+    //display the question
     questionContainer.classList.remove("hidden");
     questionContainer.innerHTML = "";
     var question = document.createElement("h1");
     question.textContent = questionBank[currentIndex].question;
     questionContainer.appendChild(question);
+    //display the corresponding answer
     answers.innerHTML = "";
     var answer = document.createElement("div");
     for (var i = 0; i < questionBank[currentIndex].answers.length; i++) {
@@ -78,6 +81,13 @@ function displayQuestion() {
 
 }
 
+function endQuiz() {
+    //stop timer
+    // clearInterval()
+    //show end screen 
+    questionContainer.classList.remove("hidden");
+}
+
 function check(event) {
 
     if (event.target.textContent === questionBank[currentIndex].correctAnswer) {
@@ -86,12 +96,15 @@ function check(event) {
         alert("incorrect");
         secondsLeft = secondsLeft - 10;
     }
-    currentIndex++;
-    displayQuestion();
-    // if {
-    //   //tell computer when to stop
 
-    // }
+    currentIndex++;
+
+    //tell computer when to stop
+    if (secondsLeft === 0 || currentIndex === questionBank.length) {
+        endQuiz();
+    } else {
+        displayQuestion();
+    }
 }
 
 //event listeners
@@ -99,4 +112,4 @@ startButton.addEventListener("click", startGame)
 
 //Remaining
 //create stop screen
-//add local storage+s
+//add local storage for scores
