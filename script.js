@@ -71,8 +71,8 @@ function startGame() {
     answers.appendChild(answer);
 
     setInterval(function () {
-        timer--;
-        timerEl.innerHTML = timer;
+        secondsLeft--;
+        timerEl.innerHTML = secondsLeft;
     }, 1000);
 }
 
@@ -83,7 +83,7 @@ function check(event) {
         alert("correct");
     } else {
         alert("incorrect");
-        timer = timer - 10;
+        secondsLeft = secondsLeft - 10;
     }
     currentIndex++;
     startGame()
