@@ -89,6 +89,8 @@ function endQuiz() {
     clearInterval(timerInterval);
     //show end screen 
     endScreen.classList.remove("hidden-end");
+    questionContainer.classList.add("hidden");
+    answers.classList.add("hidden");
 }
 
 //this function checks the user's answer
