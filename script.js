@@ -1,16 +1,22 @@
-//define global variables
+//DOM variables
 var start = document.querySelector(".start");
 var startButton = document.querySelector(".start-button");
 var container = document.querySelector(".container");
 var questionContainer = document.querySelector("#question");
 var answers = document.querySelector(".answer");
 var timerEl = document.querySelector(".timer");
+
+//javascript variables
 var secondsLeft = 75;
 var currentIndex = 0;
 
+//functions
+//function calls
+//event listeners
 function countDownTimer() {
     var timerInverval = setInterval(function () {
         secondsLeft--;
+        timerEl.textContent = secondsLeft;
 
         if (secondsLeft === 0) {
             clearInterval(timerInverval);
@@ -50,10 +56,11 @@ function startGame() {
     start.classList.add("hidden");
 
     questionContainer.classList.remove("hidden");
-
+    questionContainer.innerHTML = "";
     var question = document.createElement("h1");
     question.textContent = questionBank[currentIndex].question;
     questionContainer.appendChild(question);
+    answers.innerHTML = "";
     var answer = document.createElement("div");
     for (var i = 0; i < questionBank[currentIndex].answers.length; i++) {
         var answerOption = document.createElement("button");
@@ -87,4 +94,4 @@ function check(event) {
     // }
 }
 
-startButton.addEventListener("click", startGame);
+startButton.addEventListener("click", startGame)
