@@ -1,15 +1,17 @@
+/* Universal Selectors */
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Class selectors */
+
+.title {
+  align-content: center;
+}
 .question {
   align-content: center;
 }
 
 .hidden {
-  display: none;
-}
-
-ol {
   display: none;
 }
