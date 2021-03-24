@@ -13,17 +13,7 @@ var currentIndex = 0;
 //functions
 //function calls
 //event listeners
-function countDownTimer() {
-    var timerInverval = setInterval(function () {
-        secondsLeft--;
-        timerEl.textContent = secondsLeft;
 
-        if (secondsLeft === 0) {
-            clearInterval(timerInverval);
-            //gameOver function
-        }
-    });
-}
 var questionBank = [
     {
         question: "Commonly used data types do not include:",
@@ -52,9 +42,25 @@ var questionBank = [
     },
 ];
 
+//functions
+function countDownTimer() {
+    var timerInterval = setInterval(function () {
+        secondsLeft--;
+        timerEl.textContent = secondsLeft;
+
+        if (secondsLeft === 0) {
+            clearInterval(timerInterval);
+            //game over function
+        }
+    }, 1000);
+}
 function startGame() {
     start.classList.add("hidden");
+    countDownTimer();
+    displayQuestion();
+}
 
+function displayQuestion() {
     questionContainer.classList.remove("hidden");
     questionContainer.innerHTML = "";
     var question = document.createElement("h1");
@@ -70,15 +76,10 @@ function startGame() {
     }
     answers.appendChild(answer);
 
-    setInterval(function () {
-        secondsLeft--;
-        timerEl.innerHTML = secondsLeft;
-    }, 1000);
 }
 
 function check(event) {
-    //show next question
-    //check if answer is right or wrong
+
     if (event.target.textContent === questionBank[currentIndex].correctAnswer) {
         alert("correct");
     } else {
@@ -86,11 +87,16 @@ function check(event) {
         secondsLeft = secondsLeft - 10;
     }
     currentIndex++;
-    startGame()
+    displayQuestion();
     // if {
     //   //tell computer when to stop
 
     // }
 }
 
+//event listeners
 startButton.addEventListener("click", startGame)
+
+//Remaining
+//create stop screen
+//add local storage+s
