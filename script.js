@@ -7,6 +7,7 @@ var answers = document.querySelector(".answer");
 var timerEl = document.querySelector(".timer");
 var endScreen = document.querySelector(".end-screen");
 var finalScore = document.querySelector(".score");
+var timerInterval
 
 //javascript variables
 var secondsLeft = 75;
@@ -40,6 +41,7 @@ var questionBank = [
 ];
 
 //Functions
+
 //This function creates the countdown timer
 function countDownTimer() {
     var timerInterval = setInterval(function () {
@@ -81,25 +83,28 @@ function displayQuestion() {
 
 }
 
+//this function opens the end screen 
 function endQuiz() {
     //stop timer
-    // clearInterval()
+    clearInterval(timerInterval);
     //show end screen 
-    questionContainer.classList.remove("hidden");
+    endScreen.classList.remove("hidden-end");
 }
 
+//this function checks the user's answer
 function check(event) {
 
     if (event.target.textContent === questionBank[currentIndex].correctAnswer) {
         alert("correct");
+        currentIndex++;
     } else {
         alert("incorrect");
         secondsLeft = secondsLeft - 10;
+        currentIndex++;
     }
 
-    currentIndex++;
 
-    //tell computer when to stop
+    //indicate when to stop
     if (secondsLeft === 0 || currentIndex === questionBank.length) {
         endQuiz();
     } else {
