@@ -79,9 +79,8 @@ function startGame() {
 function check(event) {
     //show next question
     //check if answer is right or wrong
-    if (event.target.textContent === questionBank[0].correctAnswer) {
+    if (event.target.textContent === questionBank[currentIndex].correctAnswer) {
         alert("correct");
-        //WHY ISN'T THIS WORKING!!!!!
     } else {
         alert("incorrect");
         timer = timer - 10;
