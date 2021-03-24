@@ -7,7 +7,11 @@ var answers = document.querySelector(".answer");
 var timerEl = document.querySelector(".timer");
 var endScreen = document.querySelector(".end-screen");
 var scoreContainer = document.querySelector(".score");
+var submitButton = document.querySelector(".submit");
 var timerInterval
+var finalScore
+var initials
+
 
 //javascript variables
 var secondsLeft = 75;
@@ -83,33 +87,37 @@ function displayQuestion() {
 
 }
 
-// var endScreen = document.querySelector(".end-screen");
-// var scoreContainer = document.querySelector(".score");
-
 //this function opens the end screen 
 function endQuiz() {
-    //show end screen and remove question and answers
+    //show end screen and remove question, answers, and timer
     endScreen.classList.remove("hidden-end");
     questionContainer.classList.add("hidden");
+    timerEl.classList.add("hidden");
     answers.classList.add("hidden");
-    //store secondsLeft in score
-    //create element
+
+    //create element to hold and display final score
     scoreContainer.innerHTML = "";
     var finalScore = document.createElement("span");
     finalScore.textContent = secondsLeft;
     scoreContainer.appendChild(finalScore);
-    //add content to the element
-    //append element
+
+    //capture user initials
+    var initials = document.querySelector(".initials").nodeValue;
+}
+
+function submitScore() {
+    localStorage.setItem("finalScore", finalScore);
+    localStorage.setItem("initials", initials);
 }
 
 //this function checks the user's answer
 function check(event) {
 
     if (event.target.textContent === questionBank[currentIndex].correctAnswer) {
-        alert("correct");
+        // alert("correct");
         currentIndex++;
     } else {
-        alert("incorrect");
+        // alert("incorrect");
         secondsLeft = secondsLeft - 10;
         currentIndex++;
     }
@@ -124,9 +132,8 @@ function check(event) {
 }
 
 //event listeners
-startButton.addEventListener("click", startQuiz)
-
+startButton.addEventListener("click", startQuiz);
+submitButton.addEventListener("click", submitScore);
 //Remaining
-//create stop screen
 //add local storage for scores
 //style
