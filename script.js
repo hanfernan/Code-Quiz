@@ -68,7 +68,7 @@ function displayQuestion() {
     //display the question
     questionContainer.classList.remove("hidden");
     questionContainer.innerHTML = "";
-    var question = document.createElement("h1");
+    var question = document.createElement("h2");
     question.textContent = questionBank[currentIndex].question;
     questionContainer.appendChild(question);
     //display the corresponding answer
@@ -93,6 +93,7 @@ function endQuiz() {
     endScreen.classList.remove("hidden-end");
     questionContainer.classList.add("hidden");
     answers.classList.add("hidden");
+    timerEl.classList.add("hidden");
     //store secondsLeft in score
     //create element
     scoreContainer.innerHTML = "";
