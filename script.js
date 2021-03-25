@@ -81,11 +81,8 @@ function displayQuestion() {
         answer.appendChild(answerOption);
     }
     answers.appendChild(answer);
-
 }
 
-// var endScreen = document.querySelector(".end-screen");
-// var scoreContainer = document.querySelector(".score");
 
 //this function opens the end screen 
 function endQuiz() {
@@ -104,12 +101,11 @@ function endQuiz() {
     //append element
 }
 function submitScore() {
-
+    
 }
 
 //this function checks the user's answer
 function check(event) {
-
     if (event.target.textContent === questionBank[currentIndex].correctAnswer) {
         // alert("correct");
         currentIndex++;
@@ -118,7 +114,6 @@ function check(event) {
         secondsLeft = secondsLeft - 10;
         currentIndex++;
     }
-
     //indicate when to stop quiz and timer
     if (currentIndex === questionBank.length) {
         endQuiz();
@@ -132,5 +127,3 @@ function check(event) {
 startButton.addEventListener("click", startQuiz)
 submitButton.addEventListener("click", submitScore)
 
-//add local storage for scores
-//style
