@@ -8,6 +8,7 @@ var timerEl = document.querySelector(".timer");
 var endScreen = document.querySelector(".end-screen");
 var scoreContainer = document.querySelector(".score");
 var submitButton = document.querySelector(".submit");
+var initialsDiv = document.querySelector("user-initials");
 var timerInterval
 
 //javascript variables
@@ -16,8 +17,8 @@ var currentIndex = 0;
 var questionBank = [
     {
         question: "Commonly used data types do not include:",
-        answers: ["1. strings", "2. booleans", "3. alerts", "4. objects"],
-        correctAnswer: "3. alerts",
+        answers: ["1. Strings", "2. Booleans", "3. Alerts", "4. Objects"],
+        correctAnswer: "3. Alerts",
     },
     {
         question: "The condition in an if/else statement is enclosed within _______.",
@@ -26,18 +27,18 @@ var questionBank = [
     },
     {
         question: "Arrays in JavaScript can be used to store ___.",
-        answers: ["1. Numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"],
-        correctAnswer: "4. all of the above",
+        answers: ["1. Numbers and strings", "2. Other arrays", "3. Booleans", "4. All of the above"],
+        correctAnswer: "4. All of the above",
     },
     {
         question: "4. String values must be enclosed within ___ when being assigned to variables.",
-        answers: ["	1. commas", "2. curly brackets", "3. quotes", "4. parentheses"],
-        correctAnswer: "4. parentheses",
+        answers: ["	1. Commas", "2. Curly brackets", "3. Quotes", "4. Parentheses"],
+        correctAnswer: "4. Parentheses",
     },
     {
-        question: "A very useful tool used during development and debugging for printing content to the debugger is:",
-        answers: ["1. JavaScript", "2. terminal/bash", "3. for loops", "4. console log"],
-        correctAnswer: "4. console log",
+        question: "5. A very useful tool used during development and debugging for printing content to the debugger is:",
+        answers: ["1. JavaScript", "2. Terminal/bash", "3. For loops", "4. Console log"],
+        correctAnswer: "4. Console log",
     },
 ];
 
@@ -83,7 +84,6 @@ function displayQuestion() {
     answers.appendChild(answer);
 }
 
-
 //this function opens the end screen 
 function endQuiz() {
     //show end screen and remove question and answers
@@ -92,16 +92,21 @@ function endQuiz() {
     answers.classList.add("hidden");
     timerEl.classList.add("hidden");
     //store secondsLeft in score
-    //create element
     scoreContainer.innerHTML = "";
     var finalScore = document.createElement("span");
     finalScore.textContent = secondsLeft;
     scoreContainer.appendChild(finalScore);
-    //add content to the element
-    //append element
+
 }
+
+//this function stores and 
 function submitScore() {
-    
+    var initials = document.querySelector(".initials").value
+    localStorage.setItem("initials", initials);
+    var initials = localStorage.getItem("initials");
+    initialsDiv.textContent = initials;
+    var initials = localStorage.getItem("initials");
+    initialsDiv.textContent = initials;
 }
 
 //this function checks the user's answer
