@@ -6,7 +6,7 @@ I wrote the HTML, CSS, and JavaScript for this short JavaScript Quiz. When a use
 
 I worked with my tutor, instructor, and a study group during the creation of this project.
 
-![Portfolio  Site](./assets/images/screenshot.png)
+![Portfolio  Site](screenshot.PNG)
 
 ## Deployed Site
 
