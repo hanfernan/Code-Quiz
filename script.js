@@ -9,9 +9,6 @@ var endScreen = document.querySelector(".end-screen");
 var scoreContainer = document.querySelector(".score");
 var submitButton = document.querySelector(".submit");
 var timerInterval
-var finalScore
-var initials
-
 
 //javascript variables
 var secondsLeft = 75;
@@ -87,27 +84,26 @@ function displayQuestion() {
 
 }
 
+// var endScreen = document.querySelector(".end-screen");
+// var scoreContainer = document.querySelector(".score");
+
 //this function opens the end screen 
 function endQuiz() {
-    //show end screen and remove question, answers, and timer
+    //show end screen and remove question and answers
     endScreen.classList.remove("hidden-end");
     questionContainer.classList.add("hidden");
-    timerEl.classList.add("hidden");
     answers.classList.add("hidden");
-
-    //create element to hold and display final score
+    //store secondsLeft in score
+    //create element
     scoreContainer.innerHTML = "";
     var finalScore = document.createElement("span");
     finalScore.textContent = secondsLeft;
     scoreContainer.appendChild(finalScore);
-
-    //capture user initials
-    var initials = document.querySelector(".initials").nodeValue;
+    //add content to the element
+    //append element
 }
-
 function submitScore() {
-    localStorage.setItem("finalScore", finalScore);
-    localStorage.setItem("initials", initials);
+
 }
 
 //this function checks the user's answer
@@ -132,8 +128,8 @@ function check(event) {
 }
 
 //event listeners
-startButton.addEventListener("click", startQuiz);
-submitButton.addEventListener("click", submitScore);
-//Remaining
+startButton.addEventListener("click", startQuiz)
+submitButton.addEventListener("click", submitScore)
+
 //add local storage for scores
 //style
