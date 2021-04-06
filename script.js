@@ -42,6 +42,8 @@ var questionBank = [
     },
 ];
 
+var scoreArray = [];
+
 //Functions
 
 //This function creates the countdown timer
@@ -100,13 +102,19 @@ function endQuiz() {
 }
 
 //this function stores and 
-function submitScore() {
+function submitScore(event) {
+    event.preventDefault();
+    if (localStorage.getItem("scoreArray")) {
+        scoreArray = JSON.parse(localStorage.getItem("scoreArray"));
+    }
     var initials = document.querySelector(".initials").value
-    localStorage.setItem("initials", initials);
-    var initials = localStorage.getItem("initials");
-    initialsDiv.textContent = initials;
-    var initials = localStorage.getItem("initials");
-    initialsDiv.textContent = initials;
+    var scoreObject = {
+        [initials]: secondsLeft
+    }
+    scoreArray.push(scoreObject);
+    localStorage.setItem("scoreArray", JSON.stringify(scoreArray));
+    console.log(localStorage);
+    window.location.href = "scores.html"
 }
 
 //this function checks the user's answer
